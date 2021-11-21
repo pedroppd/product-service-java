@@ -20,6 +20,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(columnDefinition = "binary(36)")
     private UUID uuid;
 
     @Column()
