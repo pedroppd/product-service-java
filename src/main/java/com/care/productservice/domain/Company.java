@@ -1,17 +1,22 @@
 package com.care.productservice.domain;
 
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
+@Setter
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity()
+@Table(name = "company")
 public class Company implements Serializable {
-
-    public Company(){
-
-    }
 
     public Company(String name, String extra) {
         this.name = name;
@@ -19,7 +24,8 @@ public class Company implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID uuid;
 
     @Column()
